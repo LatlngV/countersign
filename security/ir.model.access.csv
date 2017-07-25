@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_leader_countersign.user,leader.countersign.user,model_leader_countersign,base.group_user,1,1,1,0
+access_leader_countersign.manager,leader.countersign.manager,model_leader_countersign,countersign.group_manager,1,1,1,1
+access_apply_detail.user,apply.detail.user,model_apply_detail,base.group_user,1,1,1,1
+access_apply_detail.manager,apply.detail.manager,model_apply_detail,countersign.group_manager,1,1,1,1
+access_leader_line.user,leader.line.user,model_leader_line,base.group_user,1,1,1,1
+access_leader_line.manager,leader.line.manager,model_leader_line,countersign.group_manager,1,1,1,1

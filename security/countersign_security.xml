@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="countersign.group_manager" model="res.groups">
+            <field name="name">会签权限</field>
+        </record>
+        <record id="countersign.group_account" model="res.groups">
+            <field name="name">付款权限</field>
+        </record>
+
+    </data>
+</odoo>

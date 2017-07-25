@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <template id="report_countersign_view">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <!--<t t-call="report.external_layout"/>-->
+                    <div class="page" style="font-family: \5B8B\4F53; margin-top: 0px">
+
+                        <div class="row" style="width: 100%; text-align: center; color: #0F0F0F;">
+                            <h1 t-field="doc.title"/>
+                        </div>
+
+                        <div class="row">
+                            <p>
+                                <h3 style="color:#FF0000; font-weight: bold;">项目信息</h3>
+                            </p>
+                            <div>
+                                <h4>
+                                    <span style="font-weight: bold;">工程名称:</span>
+                                    <span style="margin-left: 50px;" t-field="doc.project_name"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold;">分包项目:</span>
+                                    <span style="margin-left: 50px;" t-field="doc.subcontract_item"/>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p>
+                                <h3 style="color:#FF0000; font-weight: bold;">收款人信息</h3>
+                            </p>
+                            <div class="col-xs-6" style="margin: 0px; padding: 0px;">
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">申请人:</span>
+                                    <span style="margin: 0px 50px" t-field="doc.name"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">部 门 :</span>
+                                    <span style="margin: 0px 50px" t-field="doc.department"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">日 期 :</span>
+                                    <span style="margin: 0px 50px" t-field="doc.datetime"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">总 计 :</span>
+                                    <span style="margin: 0px 50px" t-field="doc.total"/>
+                                </h4>
+                            </div>
+                            <div class="col-xs-6">
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">收款账户:</span>
+                                    <span style="margin: 0px 50px" t-field="doc.receive_account"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">收 款 人:</span>
+                                    <span style="margin: 0px 50px" t-field="doc.payee"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">开户银行:</span>
+                                    <span style="margin: 0px 50px" t-field="doc.bank"/>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <p>
+                                <h3 style="color:#FF0000; font-weight: bold;">付款人信息</h3>
+                            </p>
+                            <div class="col-xs-6" style="margin: 0px; padding: 0px;">
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">付 款 人:</span>
+                                    <span style="margin: 0px 50px" t-field="doc.payer"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">付款金额:</span>
+                                    <span style="margin: 0px 50px" t-field="doc.payment_money"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold; display:inline-block; width:100px;">是否付款:</span>
+                                    <span style="margin: 0px 50px" t-if="doc.payment == True">已付款</span>
+                                    <span style="margin: 0px 50px" t-elif="doc.payment == False">未付款</span>
+                                </h4>
+                            </div>
+                            <div class="col-xs-6">
+                                <h4>
+                                    <span style="font-weight: bold;">付款账户:</span>
+                                    <span style="margin: 0px 50px" t-field="doc.payment_account"/>
+                                </h4>
+                                <h4>
+                                    <span style="font-weight: bold;">付款日期:</span>
+                                    <span style="margin: 0px 50px" t-field="doc.payment_date"/>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <h4 style="color: #FF0000; font-weight: bold;">序号</h4>
+                                        </th>
+                                        <th>
+                                            <h4 style="color: #FF0000; font-weight: bold;">摘要</h4>
+                                        </th>
+                                        <th>
+                                            <h4 style="color: #FF0000; font-weight: bold;">金额(人民币)</h4>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.apply_detail_line" t-as="detail">
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    <span t-field="detail.number"/>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <h4>
+                                                    <span t-field="detail.detail"/>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <h4>
+                                                    <span t-field="detail.money"/>
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <h4 style="color: #FF0000; font-weight: bold;">审批人</h4>
+                                        </th>
+                                        <th>
+                                            <h4 style="color: #FF0000; font-weight: bold;">状态</h4>
+                                        </th>
+                                        <th>
+                                            <h4 style="color: #FF0000; font-weight: bold;">日期</h4>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.leader_line" t-as="leader">
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    <span t-field="leader.leader"/>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <h4>
+                                                    <span t-field="leader.state"/>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <h4>
+                                                    <span t-field="leader.datetime"/>
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

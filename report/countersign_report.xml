@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <report
+                id="report_countersign"
+                string="付款申请表"
+                model="leader.countersign"
+                report_type="qweb-pdf"
+                file="countersign.report_countersign"
+                name="countersign.report_countersign_view"
+                groups="countersign.group_account"/>
+
+    </data>
+</odoo>

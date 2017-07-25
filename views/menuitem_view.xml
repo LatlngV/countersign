@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <menuitem
+                id="menu_main"
+                name="付款审批"
+                sequence="2"
+                groups="countersign.group_manager"/>
+        <menuitem
+                id="menu_second_first"
+                name="资金申请"
+                parent="menu_main"
+                action="action_apply_money"/>
+        <menuitem
+                id="menu_second_second"
+                name="领导会签"
+                parent="menu_main"
+                action="action_leader_countersign"/>
+        <menuitem
+                id="menu_second_third"
+                name="会计付款"
+                parent="menu_main"
+                action="action_countersign_account"
+                groups="countersign.group_account"/>
+
+    </data>
+</odoo>
